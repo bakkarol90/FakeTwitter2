@@ -15,7 +15,7 @@ public class AppUser {
     private String email;
     private String name;
     private String password;
-    @Column(name = "last name")
+    @Column(name = "last_name")
     private String lastName;
     @CreationTimestamp
     private Date registeredSince;
@@ -24,7 +24,7 @@ public class AppUser {
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
     @JoinTable(name = "follower_followed",
-            joinColumns{@JoinColumn (name = "followed_fk")},
+            joinColumns = {@JoinColumn (name = "follower_fk")},
             inverseJoinColumns = {@JoinColumn(name = "followed_fk")})
     private Set<AppUser> following = new HashSet<>();
 
@@ -97,6 +97,21 @@ public class AppUser {
         return following;
     }
 
+    @Override
+    public String toString() {
+        return "AppUser{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", following=" + following +
+                ", followed=" + follower +
+                ", registretedSince=" + registeredSince +
+                '}';
+    }
+
     public static class UserBuilder {
         private String name;
         private String lastName;
@@ -110,6 +125,7 @@ public class AppUser {
         public UserBuilder login(String login) {
             this.login = login;
             return this;
+
         }
         public UserBuilder name(String name) {
             this.name = name;

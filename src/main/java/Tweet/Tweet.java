@@ -25,6 +25,35 @@ public class Tweet {
 
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public Date getPublishedAt() {
+        return publishedAt;
+    }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public AppUser getAuthor() {
+        return author;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setPublishedAt(Date publishedAt) {
+        this.publishedAt = publishedAt;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setAuthor(AppUser author) {
+        this.author = author;
+    }
 }
